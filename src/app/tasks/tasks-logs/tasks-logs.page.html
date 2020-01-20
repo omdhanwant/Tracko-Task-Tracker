@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tasks"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Logs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid padding>
+    <ion-row>
+      <ion-col style="background:#b4afaf">
+        Name
+      </ion-col>
+      <ion-col style="background:#b4afaf">
+        Description
+      </ion-col>
+      <ion-col style="background:#b4afaf">
+        Created At
+      </ion-col>
+      <ion-col style="background:#b4afaf">
+       Start Time
+      </ion-col>
+      <ion-col style="background:#b4afaf">
+        End Time
+      </ion-col>
+      <ion-col style="background:#b4afaf">
+        Status
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let task of tasks">
+      <ion-col>
+        {{task.name}}
+      </ion-col>
+      <ion-col>
+        {{task.description}}
+      </ion-col>
+      <ion-col>
+        {{task.createdAt | date: 'dd MMM, yyyy'}}
+      </ion-col>
+      <ion-col>
+        {{task.startTime | date: 'h:mm a'}}
+      </ion-col>
+      <ion-col>
+        {{task.endTime | date: 'h:mm a'}}
+      </ion-col>
+      <ion-col *ngIf="!task.startTime && !task.endTime">
+        To Do
+      </ion-col>
+
+      <ion-col *ngIf="task.startTime && !task.endTime">
+        In Process
+      </ion-col>
+      
+      <ion-col *ngIf="task.startTime && task.endTime">
+        Completed
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

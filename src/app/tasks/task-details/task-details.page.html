@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tasks"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Task Detail</ion-title>
+
+    <ion-button (click)="start()" *ngIf="paramId && !startTime" class="ion-margin-end" routerLink='/tasks/task-details' slot="end">
+      Start Task
+    </ion-button>
+    <ion-button (click)="end()" *ngIf="paramId && startTime && !endTime" class="ion-margin-end" color='danger' routerLink='/tasks/task-details' slot="end">
+      End Task
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="12" size-lg="6" max-width="auto" offset-lg="3">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle *ngIf="endTime">
+              Congrats! This task is completed.
+            </ion-card-subtitle>
+
+            <ion-card-title>
+              {{heading}} 
+              <ion-icon *ngIf="startTime && !endTime" name="checkmark-circle"></ion-icon>
+              <ion-icon *ngIf="endTime" name="done-all"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Name</ion-label>
+              <ion-input name='name' [(ngModel)]='name' type="text" [disabled]="endTime"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label >Description</ion-label>
+              <ion-textarea name='description' [(ngModel)]='description' [disabled]="endTime" rows="1" cols="20" placeholder="Enter any notes here..."></ion-textarea>
+            </ion-item>
+
+            <ion-item slot="end" *ngIf="paramId">
+              <ion-label >Created At</ion-label>
+              <ion-title >{{createdAt | date: 'yyyy-MM-dd'}}</ion-title>
+            </ion-item>
+
+            <ion-button *ngIf="!endTime" class="ion-margin-top" (click)='save()' color="primary">
+              <ion-icon slot="start" name="add"></ion-icon>
+              Save
+            </ion-button >
+
+            <ion-button *ngIf="paramId" slot="end" fill="clear" class="ion-margin-top" (click)='delete()'>
+              <ion-icon color="danger" name="trash"></ion-icon>
+            </ion-button>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

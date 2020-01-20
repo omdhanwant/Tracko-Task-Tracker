@@ -5,10 +5,10 @@
     </ion-buttons>
     <ion-title>Task Detail</ion-title>
 
-    <ion-button (click)="start()" *ngIf="paramId && !startTime" class="ion-margin-end" routerLink='/tasks/task-details' slot="end">
+    <ion-button (click)="start()" *ngIf="paramId && !startTime" class="ion-margin-end" routerLink='/tasks/task-details' slot="end" size="small">
       Start Task
     </ion-button>
-    <ion-button (click)="end()" *ngIf="paramId && startTime && !endTime" class="ion-margin-end" color='danger' routerLink='/tasks/task-details' slot="end">
+    <ion-button (click)="end()" *ngIf="paramId && startTime && !endTime" class="ion-margin-end" color='danger' routerLink='/tasks/task-details' slot="end" size="small">
       End Task
     </ion-button>
   </ion-toolbar>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../task.service';
-import { Task } from '../model/task';
+import { Task, Status } from '../model/task';
 import { v4 as uuid } from 'uuid';
 import { AlertController } from '@ionic/angular';
 
@@ -74,6 +74,7 @@ export class TaskDetailsPage implements OnInit {
       description: this.description,
       startTime: this.startTime,
       endTime: this.endTime,
+      status: this.endTime ? Status.COMPLETED : this.startTime ? Status.IN_PROGRESS : Status.TO_DO,
       createdAt: this.createdAt,
       deletedAt: null
     };
@@ -89,6 +90,7 @@ export class TaskDetailsPage implements OnInit {
       description: this.description,
       startTime: null,
       endTime: null,
+      status: Status.TO_DO,
       createdAt: new Date().toString(),
       deletedAt: null
     };

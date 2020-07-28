@@ -21,8 +21,8 @@
               {{task.createdAt | date: 'dd MMM, yyyy'}}              
             </ion-card-subtitle>
             <ion-card-title>{{task.name}}
-               <ion-icon *ngIf="task.startTime && !task.endTime" name="checkmark-circle"></ion-icon>
-               <ion-icon *ngIf="task.endTime" name="done-all"></ion-icon>
+               <ion-icon *ngIf="task.status === 'IN PROGRESS'" name="checkmark-circle"></ion-icon>
+               <ion-icon *ngIf="task.status === 'COMPLETED'" name="done-all"></ion-icon>
               </ion-card-title>
           </ion-card-header>
         

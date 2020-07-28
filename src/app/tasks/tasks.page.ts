@@ -7,22 +7,22 @@ import { Task } from './model/task';
   templateUrl: './tasks.page.html',
   styleUrls: ['./tasks.page.scss'],
 })
-export class TasksPage implements OnInit {
+export class TasksPage {
   tasks: Task[];
 
   constructor(private service: TaskService) {
     this.reload();
    }
 
-  ngOnInit() {
-    this.tasks = [];
+  ionViewWillEnter() {
     this.service.getTasks().then(tasks => {
+      this.tasks = [];
       this.tasks = tasks;
     });
   }
 
   reload() {
-    this.ngOnInit();
+    this.ionViewWillEnter();
   }
 
 }

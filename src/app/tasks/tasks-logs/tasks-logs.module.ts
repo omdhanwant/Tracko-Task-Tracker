@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TasksLogsPageRoutingModule } from './tasks-logs-routing.module';
 
 import { TasksLogsPage } from './tasks-logs.page';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TasksLogsPageRoutingModule
+    TasksLogsPageRoutingModule,
+    NgxDatatableModule
   ],
   declarations: [TasksLogsPage]
 })

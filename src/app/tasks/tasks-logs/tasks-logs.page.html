@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid padding>
+  <!-- <ion-grid padding>
     <ion-row>
       <ion-col style="background:#b4afaf">
         Name
@@ -58,5 +58,22 @@
         Completed
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
+
+  <ion-grid padding>
+    <ion-row>
+      <ngx-datatable
+  [rows]="tasks">
+
+  <ngx-datatable-column name="Name"></ngx-datatable-column>
+  <ngx-datatable-column name="Description"></ngx-datatable-column>
+  <ngx-datatable-column name="Status" ></ngx-datatable-column>
+  <ngx-datatable-column name="CreatedAt"></ngx-datatable-column>
+  <ngx-datatable-column name="StartTime"></ngx-datatable-column>
+  <ngx-datatable-column name="EndTime"></ngx-datatable-column>
+ 
+</ngx-datatable>
+      </ion-row>
+      </ion-grid>
+  
 </ion-content>
